@@ -1,30 +1,35 @@
 import Head from "next/head";
-import { useQuery } from "@apollo/client";
-import { QUERY_COUNTRIES } from "../queries";
+import { useSubscription } from "@apollo/client";
+import { MY_SUBSCRIPTION_MESSAGES } from "../queries";
 
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
-  const { data, loading, error } = useQuery(QUERY_COUNTRIES);
+  const { data, loading, error } = useSubscription(MY_SUBSCRIPTION_MESSAGES);
+
+  if (data) {
+    console.log("messages", data.queryMessage);
+  }
 
   if (loading) {
     return <p>loading...</p>;
   }
 
   if (error) {
+    console.log("error", error);
     return <p>an error happened</p>;
   }
 
   return (
     <div className={styles.container}>
       <Head>
-        <title>Countries GraphQL</title>
+        <title>Realtime TEST</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>Countries</h1>
+      <h1>Realtime</h1>
       <div>
-        {data.countries.map(country => (
-          <div key={country._id}>{country.name}</div>
+        {data.queryMessage.map(message => (
+          <div key={message.id}>{message.text}</div>
         ))}
       </div>
     </div>
