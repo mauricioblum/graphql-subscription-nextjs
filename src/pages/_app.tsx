@@ -11,12 +11,12 @@ import "../styles/globals.css";
 import { getMainDefinition } from "@apollo/client/utilities";
 
 const httpLink = new HttpLink({
-  uri: "https://superb-field.eu-central-1.aws.cloud.dgraph.io/graphql",
+  uri: "https://realtimesoccer.prismic.io/graphql",
 });
 
 const wsLink = process.browser
   ? new WebSocketLink({
-      uri: `wss://superb-field.eu-central-1.aws.cloud.dgraph.io/graphql`,
+      uri: `wss://realtimesoccer.prismic.io/graphql`,
       options: {
         reconnect: true,
       },

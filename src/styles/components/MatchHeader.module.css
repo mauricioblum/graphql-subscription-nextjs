@@ -1,0 +1,36 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.scoreContainer {
+  display: flex;
+  align-items: center;
+}
+
+.clubContainer {
+  display: flex;
+  align-items: center;
+}
+
+.club {
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+.clubImage {
+  margin: 0 1rem;
+}
+
+.score {
+  font-size: 2.5rem;
+  font-weight: bold;
+  padding: 0 1rem;
+}
+
+.cross {
+  font-size: 1.3rem;
+}

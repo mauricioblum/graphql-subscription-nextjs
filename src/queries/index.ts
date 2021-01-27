@@ -37,11 +37,40 @@ export const QUERY_MATCHES = gql`
 
 export const MY_SUBSCRIPTION_MESSAGES = gql`
   subscription MySubscription {
-    queryMessage {
+    queryMessage(order: { desc: time }) {
       id
       text
+      title
+      half
+      time
       match(filter: { id: ["0xa"] }) {
         id
+      }
+    }
+  }
+`;
+
+export const ADD_MATCH_MESSAGE = gql`
+  mutation AddMatchMessage {
+    addMessage(
+      input: {
+        text: "Fulano pega a bola..."
+        half: First
+        club: { id: "0x5", name: "SC Internacional" }
+        match: { id: "0xa" }
+        time: "10"
+        title: "Que lance!"
+      }
+    ) {
+      message {
+        id
+        text
+        title
+        half
+        time
+        match {
+          id
+        }
       }
     }
   }
